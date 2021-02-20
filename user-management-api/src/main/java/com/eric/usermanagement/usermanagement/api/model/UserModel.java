@@ -11,6 +11,6 @@ public class UserModel {
 
     private String name;
 
-    private Integer age;
+    private String passwd;
 
 }

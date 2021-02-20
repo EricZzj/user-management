@@ -11,4 +11,11 @@
     <artifactId>user-management-manager</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.eric.user-management</groupId>
+            <artifactId>user-management-dao</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

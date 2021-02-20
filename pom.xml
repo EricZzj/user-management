@@ -5,6 +5,12 @@
     <groupId>com.eric.user-management</groupId>
     <artifactId>user-management</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+    </dependencies>
     <packaging>pom</packaging>
     <name>user-management</name>
 
@@ -16,7 +22,6 @@
     </properties>
 
     <modules>
-        <module>start</module>
         <module>user-management-api</module>
         <module>user-management-dao</module>
         <module>user-management-manager</module>
@@ -50,6 +55,23 @@
                 <artifactId>commons-lang3</artifactId>
                 <version>3.1</version>
                 <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.48</version>
+            </dependency>
+            <!-- 数据源 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.0.19</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -1,36 +1,38 @@
 package com.eric.usermanagement.usermanagement.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.beans.BeanCopier;
-import org.springframework.stereotype.Component;
-
-import com.eric.usermanagement.usermanagement.dao.dataobject.UserDO;
-import com.eric.usermanagement.usermanagement.dao.mapper.UserMapper;
 import com.eric.usermanagement.usermanagement.api.UserService;
 import com.eric.usermanagement.usermanagement.api.model.UserModel;
+import com.eric.usermanagement.usermanagement.dao.dataobject.UserDO;
+import com.eric.usermanagement.usermanagement.dao.interfaces.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 /**
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
  */
-@Component
+@Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserMapper userMapper;
 
-    private static final BeanCopier copier = BeanCopier.create(UserModel.class, UserDO.class, false);
+    @Autowired
+    private UserDao userDao;
 
     public String getUserName(Long id) {
-        UserDO userDO = userMapper.getById(id);
-        return userDO != null ? userDO.getName() : null;
+        Optional<UserDO> user = userDao.findById(id);
+        if (user.isPresent()) {
+            return user.get().getUsername();
+        }
+        return "null";
     }
 
-    public UserModel addUser(UserModel user) {
+    public UserDO addUser(UserModel user) {
         UserDO userDO = new UserDO();
-        copier.copy(user, userDO, null);
-
-        Long id = userMapper.insert(userDO);
-        user.setId(id);
-        return user;
+        userDO.setUsername(user.getName());
+        userDO.setPasswd(user.getPasswd());
+        UserDO save = userDao.save(userDO);
+        return save;
     }
+
 }

@@ -25,7 +25,7 @@
         <dependency>
             <groupId>com.eric.user-management</groupId>
             <artifactId>user-management-manager</artifactId>
-            <version>${project.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
     </dependencies>

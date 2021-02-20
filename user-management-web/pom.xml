@@ -21,7 +21,11 @@
             <artifactId>user-management-api</artifactId>
             <version>${project.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.eric.user-management</groupId>
+            <artifactId>user-management-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

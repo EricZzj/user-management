@@ -1,14 +1,14 @@
-package com.eric.usermanagement.usermanagement.web;
+package com.eric.usermanagement.usermanagement.web.controller;
 
+import com.eric.usermanagement.usermanagement.api.UserService;
+import com.eric.usermanagement.usermanagement.api.model.UserModel;
+import com.eric.usermanagement.usermanagement.dao.dataobject.UserDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.eric.usermanagement.usermanagement.api.UserService;
-import com.eric.usermanagement.usermanagement.api.model.UserModel;
 
 /**
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
@@ -27,10 +27,10 @@ public class UserController {
 
     @RequestMapping("/add")
     @ResponseBody
-    public UserModel addUser(@RequestParam("name") String name, @RequestParam("age") Integer age) {
+    public UserDO addUser(String name, String passwd) {
         UserModel user = new UserModel();
         user.setName(name);
-        user.setAge(age);
+        user.setPasswd(passwd);
         return userService.addUser(user);
     }
 }
